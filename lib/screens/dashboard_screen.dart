@@ -23,15 +23,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Scaffold(
       drawer: isWide
           ? null
-          : SizedBox(
-              width: width * 0.8, // 80% of screen width
-              child: Sidebar(
-                selectedTab: _selectedTab,
-                onTabSelected: (tab) {
-                  setState(() => _selectedTab = tab);
-                  Navigator.of(context).pop();
-                },
-                showText: true,
+          : SafeArea(
+              child: SizedBox(
+                width: width * 0.7, // 60% of screen width
+                child: Sidebar(
+                  selectedTab: _selectedTab,
+                  onTabSelected: (tab) {
+                    setState(() => _selectedTab = tab);
+                    Navigator.of(context).pop();
+                  },
+                  showText: true,
+                ),
               ),
             ),
       body: Column(
@@ -43,13 +45,17 @@ class _DashboardScreenState extends State<DashboardScreen> {
               if (isMobile)
                 Positioned(
                   left: 0,
-                  top: 0,
+                  top: 35,
                   bottom: 0,
-                  child: Builder(
-                    builder: (context) => IconButton(
-                      icon: const Icon(Icons.menu, color: Colors.white),
-                      onPressed: () => Scaffold.of(context).openDrawer(),
-                      tooltip: 'Open menu',
+                  child: Center(
+                    child: Builder(
+                      builder: (context) => IconButton(
+                        icon: const Icon(Icons.menu, color: Colors.white),
+                        onPressed: () => Scaffold.of(context).openDrawer(),
+                        tooltip: 'Open menu',
+                        padding: const EdgeInsets.all(12),
+                        constraints: const BoxConstraints(),
+                      ),
                     ),
                   ),
                 ),
@@ -80,6 +86,9 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 
   Widget _buildTabContent() {
+    final width = MediaQuery.of(context).size.width;
+    final isMobile = width < 600;
+    
     switch (_selectedTab) {
       case SidebarTab.home:
         return Column(
@@ -167,29 +176,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(right: isMobile ? 4 : 8),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: isMobile ? 8 : 12),
+                      ),
+                      child: Text(
+                        AppStrings.viewSalesHistory,
+                        style: TextStyle(fontSize: isMobile ? 11 : 14),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
-                  child: Text(AppStrings.viewSalesHistory),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                    elevation: 2,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(6),
+                Expanded(
+                  child: Padding(
+                    padding: EdgeInsets.only(left: isMobile ? 4 : 8),
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white,
+                        foregroundColor: Colors.black,
+                        elevation: 2,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(6),
+                        ),
+                        padding: EdgeInsets.symmetric(vertical: isMobile ? 8 : 12),
+                      ),
+                      child: Text(
+                        AppStrings.viewPurchaseHistory,
+                        style: TextStyle(fontSize: isMobile ? 11 : 14),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
                     ),
                   ),
-                  child: Text(AppStrings.viewPurchaseHistory),
                 ),
               ],
             ),

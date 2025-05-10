@@ -22,7 +22,7 @@ class AppStrings {
   static const String outOfStock = 'OUT OF STOCK';
   
   // User
-  static const String userInitial = 'G';
+  static const String userInitial = 'V';
   
   // Sidebar Menu Items
   static const String home = 'Home';

@@ -46,7 +46,7 @@ class InvoiceCard extends StatelessWidget {
                 title,
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: isMobile ? 13 : 15,
+                  fontSize: isMobile ? 9 : 15,
                   color: Colors.black87,
                 ),
               ),
@@ -55,19 +55,26 @@ class InvoiceCard extends StatelessWidget {
                 TextButton.icon(
                   onPressed: () {},
                   icon: Container(
-                    width: 20,
-                    height: 20,
+                    width: isMobile ? 16 : 20,
+                    height: isMobile ? 16 : 20,
                     decoration: const BoxDecoration(
                       color: Colors.blue,
                       shape: BoxShape.circle,
                     ),
-                    child: const Icon(Icons.add, color: Colors.white, size: 14),
+                    child: Icon(Icons.add, color: Colors.white, size: isMobile ? 12 : 14),
                   ),
-                  label: Text(AppStrings.newButton, style: TextStyle(fontSize: 13, color: Colors.black, fontWeight: FontWeight.w500)),
+                  label: Text(
+                    AppStrings.newButton,
+                    style: TextStyle(
+                      fontSize: isMobile ? 9 : 13,
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500
+                    ),
+                  ),
                   style: TextButton.styleFrom(
                     foregroundColor: Colors.black,
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
-                    minimumSize: const Size(0, 28),
+                    padding: EdgeInsets.symmetric(horizontal: isMobile ? 0 : 8, vertical: 0),
+                    minimumSize: Size(0, isMobile ? 24 : 28),
                     tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                   ),
                 ),
