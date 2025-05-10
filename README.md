@@ -27,7 +27,7 @@ A modern, responsive business management dashboard built with Flutter. This appl
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/dlumebiz_dashboard.git
+git clone https://github.com/EedupugantiVenkatesh/dlumebiz_dashboard.git
 ```
 
 2. Navigate to the project directory:
@@ -68,32 +68,6 @@ lib/
 - **Invoice Cards**: Display purchase and sales information
 - **Top Selling Chart**: Visual representation of product performance
 
-## Responsive Design
 
-The application is designed to work seamlessly across different screen sizes:
-- Desktop (>900px): Full sidebar with text labels
-- Tablet (600px-900px): Compact layout
-- Mobile (<600px): Optimized for smaller screens with hamburger menu
 
-## Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Contact
-
-For any queries or support, please contact:
-- Email: info@dlume.com
-- Website: [www.dlume.com](https://www.dlume.com)
-
-## Acknowledgments
-
-- Flutter team for the amazing framework
-- All contributors who have helped shape this project
